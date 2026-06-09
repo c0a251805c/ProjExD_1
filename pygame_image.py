@@ -16,19 +16,32 @@ def main():
 
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img,True,False)#第2引数で左右反転するか否か、第3引数で上下反転するか否か
+    kk_rct = kk_img.get_rect()
+    kk_rct.center = 300,200
+
     tmr = 0
+
     while True:
-        x = tmr
+        
         for event in pg.event.get():
             if event.type == pg.QUIT: return
+        
+        key_lst = pg.key.get_pressed()
+        if key_lst[pg.K_UP]:#↑矢印
+            kk_rct.move_ip((0,-1))#上に移動
+        if key_lst[pg.K_DOWN]:#↑矢印
+            kk_rct.move_ip((0,+1))#上に移動
+        if key_lst[pg.K_LEFT]:#↑矢印
+            kk_rct.move_ip((-1,0))#上に移動
+        if key_lst[pg.K_RIGHT]:#↑矢印
+            kk_rct.move_ip((+1,0))#上に移動
+        x = tmr % 3200
 
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_img2, [-x+1600, 0])
         screen.blit(bg_img, [-x+3200, 0])
 
-        if x == 3199:
-            x = tmr % 3200
-        screen.blit(kk_img, [300, 200])
+        screen.blit(kk_img, kk_rct)
         pg.display.update()
         tmr += 1       
         clock.tick(200)
