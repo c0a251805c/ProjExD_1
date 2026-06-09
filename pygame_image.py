@@ -11,6 +11,9 @@ def main():
     clock  = pg.time.Clock()
 
     bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img = pg.image.load("fig/pg_bg.jpg")
+    bg_img2 = pg.transform.flip(bg_img,True,False)
+
     kk_img = pg.image.load("fig/3.png")
     kk_img = pg.transform.flip(kk_img,True,False)#第2引数で左右反転するか否か、第3引数で上下反転するか否か
     tmr = 0
@@ -20,9 +23,14 @@ def main():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [-x, 0])
+        screen.blit(bg_img2, [-x+1600, 0])
+        screen.blit(bg_img, [-x+3200, 0])
+
+        if x == 3199:
+            x = tmr % 3200
         screen.blit(kk_img, [300, 200])
         pg.display.update()
-        tmr += 1        
+        tmr += 1       
         clock.tick(200)
 
 
