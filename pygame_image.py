@@ -25,17 +25,19 @@ def main():
         
         for event in pg.event.get():
             if event.type == pg.QUIT: return
-        
+        x = tmr % 3200
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:#↑矢印
             kk_rct.move_ip((0,-1))#上に移動
-        if key_lst[pg.K_DOWN]:#↑矢印
-            kk_rct.move_ip((0,+1))#上に移動
-        if key_lst[pg.K_LEFT]:#↑矢印
-            kk_rct.move_ip((-1,0))#上に移動
-        if key_lst[pg.K_RIGHT]:#↑矢印
-            kk_rct.move_ip((+1,0))#上に移動
-        x = tmr % 3200
+        if key_lst[pg.K_DOWN]:#↓矢印
+            kk_rct.move_ip((0,+1))#下に移動
+        if key_lst[pg.K_LEFT]:#←矢印
+            kk_rct.move_ip((-1,0))#左に移動
+        if key_lst[pg.K_RIGHT]:#→矢印
+            kk_rct.move_ip((+1,0))#右に移動
+        else:
+            kk_rct.move_ip((-1,0))
+        
 
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_img2, [-x+1600, 0])
