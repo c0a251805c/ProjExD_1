@@ -28,7 +28,7 @@ def main():
         x = tmr % 3200
         key_lst = pg.key.get_pressed()
 
-        a = 0
+        a = -1
         b = 0
 
         if key_lst[pg.K_UP]:#↑矢印
@@ -36,11 +36,11 @@ def main():
         if key_lst[pg.K_DOWN]:#↓矢印
             b = +1
         if key_lst[pg.K_LEFT]:#←矢印
-            a = -1
+            a = -2
         if key_lst[pg.K_RIGHT]:#→矢印
             a = +1
-        else:
-            a = -1
+
+
         kk_rct.move_ip((a,b))
         
 
